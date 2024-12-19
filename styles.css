@@ -1,0 +1,255 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #a0c4ff, #f0a6ca); /* พื้นหลังสีโทนฟ้าอมชมพู */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+#container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 3em;
+    background: linear-gradient(to right, #ff9a9e, #fecfef, #fb749b); /* สีโทนชมพู */
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: pinkGradientMove 5s ease-in-out infinite, moveUpDown 2s ease-in-out infinite;
+    font-family: 'Cursive', 'Arial', sans-serif; /* เพิ่มฟอนต์เพื่อความสวยงาม */
+}
+
+@keyframes pinkGradientMove {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+p {
+    font-size: 1.2em;
+    color: #333;
+}
+
+img {
+    width: 300px;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff4500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+button:hover:enabled {
+    background-color: #ff6347;
+}
+
+#surprise-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ff4500;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 600px; /* ความกว้างของกล่อง */
+    margin: auto;
+    border-radius: 10px; /* ปรับให้มุมเป็นมุมมน */
+    overflow: hidden; /* ซ่อนส่วนที่เกิน */
+}
+
+.slide {
+    display: none;
+}
+
+.slide-image {
+    width: 100%;
+    height: 400px; /* ความสูงของรูปภาพ */
+    object-fit: cover; /* ครอบคลุมกล่อง */
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    width: auto;
+    padding: 16px;
+    margin-top: -22px; /* ปรับตำแหน่งแนวตั้ง */
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(0,0,0,0.8); /* พื้นหลังปุ่ม */
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,1); /* สีปุ่มเมื่อชี้ */
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+#gift-box {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#gift-box:hover {
+    transform: scale(1.1);
+}
+
+#gift-content img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef, #fb749b); /* พื้นหลังการ์ดอวยพรสีโทนชมพู */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    transform: scale(0.7);
+    animation: popupScale 0.5s forwards;
+    font-family: 'Cursive', 'Arial', sans-serif; /* เพิ่มฟอนต์สำหรับการ์ดอวยพร */
+}
+
+.popup-content h2 {
+    font-size: 2.5em; /* ปรับขนาดฟอนต์ของหัวเรื่อง */
+    margin-bottom: 20px; /* เพิ่มพื้นที่ด้านล่างหัวเรื่อง */
+    color: #fff9c4; /* สีของหัวเรื่อง */
+    text-shadow: 2px 2px #333; /* เพิ่มเงาให้กับหัวเรื่อง */
+}
+
+.popup-content p {
+    font-size: 1.5em; /* ปรับขนาดฟอนต์ของเนื้อหา */
+    margin-bottom: 20px; /* เพิ่มพื้นที่ด้านล่างเนื้อหา */
+    color: #ffffe0; /* สีของเนื้อหา */
+    text-shadow: 1px 1px #333; /* เพิ่มเงาให้กับเนื้อหา */
+    line-height: 1.6; /* เพิ่มความห่างระหว่างบรรทัด */
+}
+
+.popup-content .password-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.popup-content input[type="text"] {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    text-align: center;
+    border: 2px solid #ff9a9e; /* ขอบของกล่องใส่รหัส */
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content input[type="text"]:focus {
+    outline: none;
+    border-color: #fb749b; /* สีขอบเมื่อเลือกกล่องใส่รหัส */
+    box-shadow: 0 0 10px rgba(251, 116, 155, 0.5); /* เงาเมื่อเลือกกล่องใส่รหัส */
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    font-size: 1.2em; /* ปรับขนาดฟอนต์ของปุ่ม */
+    color: white;
+    background-color: #ff4500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup-content button:hover {
+    background-color: #ff6347;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popupScale {
+    from { transform: scale(0.7); }
+    to { transform: scale(1); }
+}
