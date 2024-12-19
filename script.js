@@ -2,7 +2,6 @@
 function showSurprise() {
     var popup = document.getElementById('password-popup');
     popup.style.display = 'flex'; // ใช้ flex เพื่อให้อยู่กึ่งกลาง
-    document.addEventListener('keydown', handleKeyDown); // เพิ่มการฟังเหตุการณ์ keydown
 }
 
 // ฟังก์ชั่นเลื่อนโฟกัสไปยังช่องถัดไป
@@ -36,14 +35,27 @@ function checkPassword() {
     if (password.toLowerCase() === 'open') {
         var popup = document.getElementById('password-popup');
         popup.style.display = 'none';
-        document.removeEventListener('keydown', handleKeyDown); // ลบการฟังเหตุการณ์ keydown
 
-        // ทำให้ปุ่ม Surprise กดไม่ได้
+        // ลบรูปภาพ birthday-image
+        var birthdayImage = document.getElementById('birthday-image');
+        if (birthdayImage) {
+            birthdayImage.style.display = 'none';
+        }
+
+        // ลบปุ่ม Surprise
         var surpriseButton = document.querySelector('button[onclick="showSurprise()"]');
         if (surpriseButton) {
-            surpriseButton.disabled = true;
-            surpriseButton.style.cursor = 'not-allowed';
-            surpriseButton.style.opacity = '0.5';
+            surpriseButton.style.display = 'none';
+        }
+
+        // ลบข้อความ Happy Birthday! และ มีความสุขมากนะอ้วนนนน!
+        var message = document.getElementById('message');
+        var additionalMessage = message.nextElementSibling;
+        if (message) {
+            message.style.display = 'none';
+        }
+        if (additionalMessage) {
+            additionalMessage.style.display = 'none';
         }
 
         // แสดงวิดีโอ
@@ -103,6 +115,9 @@ function handleKeyDown(e) {
     }
 }
 
+// เพิ่มเหตุการณ์ keydown
+document.addEventListener('keydown', handleKeyDown);
+
 // ตัวแปรสำหรับสไลด์โชว์และการเลื่อน
 var slideIndex = 1;
 var xDown = null;
@@ -138,12 +153,17 @@ function showSlides(n) {
 // ฟังก์ชั่นเปิดกล่องของขวัญ
 function openGift() {
     var giftBox = document.getElementById('gift-box');
-    var giftContent = document.getElementById('gift-content');
-    giftBox.style.display = 'none';
-    giftContent.style.display = 'block';
+    giftBox.classList.add('shake');
 
-    // แสดงการ์ดอวยพรเมื่อเปิดกล่องของขวัญ
-    showGreetingCard();
+    setTimeout(function() {
+        giftBox.classList.remove('shake');
+        var giftContent = document.getElementById('gift-content');
+        giftBox.style.display = 'none';
+        giftContent.style.display = 'block';
+
+        // แสดงการ์ดอวยพรเมื่อเปิดกล่องของขวัญ
+        showGreetingCard();
+    }, 1000); // ระยะเวลาการสั่น 1 วินาที
 }
 
 // ฟังก์ชั่นแสดงการ์ดอวยพร
@@ -197,4 +217,5 @@ function handleTouchMove(evt) {
 }
 
 // เพิ่มเหตุการณ์ touchstart และ touchmove
-document.addEventListener
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);

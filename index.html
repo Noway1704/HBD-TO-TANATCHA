@@ -17,7 +17,7 @@
         <!-- ป็อปอัปใส่รหัส -->
         <div id="password-popup" class="popup" style="display:none;">
             <div class="popup-content">
-                <p>ใส่รหัสก่อนนะอ้วนรหัสคือ: open</p>
+                <p>ใส่รหัสก่อนนะอ้วนรหัสคือ : open</p>
                 <div class="password-inputs">
                     <input type="text" maxlength="1" id="char1" oninput="moveFocus(1, 2)">
                     <input type="text" maxlength="1" id="char2" oninput="moveFocus(2, 3)">
@@ -28,6 +28,11 @@
             </div>
         </div>
 
+                <!-- วิดีโอจาก YouTube -->
+        <div id="youtube-video-container" style="display:none;">
+            <iframe width="560" height="315" src="https://youtube.com/shorts/32hEHs5l1iw?feature=share" frameborder="0" allowfullscreen></iframe>
+        </div>
+
         <!-- ส่วนแสดงวิดีโอ -->
         <div id="video-container" style="display:none;">
             <video width="320" height="240" controls>
@@ -36,10 +41,11 @@
             </video>
         </div>
 
+
         <!-- เนื้อหาเพิ่มเติม -->
         <div id="additional-content" style="display:none;">
-            <h2>More Surprises!</h2>
-            <p>Here are some special moments captured just for you!</p>
+            <h2> Surprise🎊🎉</h2>
+            <p>หวังว่าเธอจะชอบนะ</p>
             
             <!-- สไลด์โชว์รูปภาพ -->
             <div class="slideshow-container">
@@ -65,7 +71,7 @@
 
         <!-- กล่องของขวัญ -->
         <div id="gift-container" style="display:none;">
-            <h2>Open the Gift!</h2>
+            <h2>ลองเปิดนี่ดูสิ อิอิ</h2>
             <img id="gift-box" src="/img/Papang/pngegg.png" alt="Gift Box" onclick="openGift()">
             <div id="gift-content" style="display:none;">
                 <img src="/img/Papang/Untitled-1.png" alt="Gift Image" style="width:100%;">
@@ -76,7 +82,7 @@
     <!-- ป็อปอัปแสดงการ์ดอวยพร -->
     <div id="greeting-card-popup" class="popup" style="display:none;">
         <div class="popup-content">
-            <h2>แฮปๆนะไอ้อ้วนของเค้า</h2>
+            <h2>แฮปๆนะคนเก่งของเค้า</h2>
             <p>Wishing you a day filled with love, joy, and all your favorite things. Have a fantastic birthday!</p>
             <button onclick="closeGreetingCard()">Close</button>
         </div>

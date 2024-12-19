@@ -1,3 +1,4 @@
+/* CSS ทั้งหมด */
 body {
     display: flex;
     justify-content: center;
@@ -17,6 +18,7 @@ body {
     width: 80%;
     max-width: 900px;
     margin: 20px 0;
+    
 }
 
 h1 {
@@ -158,6 +160,22 @@ button:hover:enabled {
     transform: scale(1.1);
 }
 
+#gift-box.shake {
+    animation: shake 0.5s; /* เพิ่มการสั่น */
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
 #gift-content img {
     width: 200px;
     height: 200px;
@@ -242,6 +260,11 @@ button:hover:enabled {
 
 .popup-content button:hover {
     background-color: #ff6347;
+}
+
+#video-container {
+    display: none;
+    margin-top: 160px; /* เพิ่มระยะห่างด้านบน */
 }
 
 @keyframes fadeIn {
