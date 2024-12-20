@@ -264,7 +264,7 @@ button:hover:enabled {
 
 #video-container {
     display: none;
-    margin-top: 160px; /* เพิ่มระยะห่างด้านบน */
+    margin-top: 200px; /* เพิ่มระยะห่างด้านบน */
 }
 
 @keyframes fadeIn {
