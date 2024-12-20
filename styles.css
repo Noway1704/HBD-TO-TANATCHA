@@ -262,8 +262,43 @@ button:hover:enabled {
 
 #youtube-video-container {
     display: none;
-    margin-top: 250px; /* เพิ่มระยะห่างด้านบน */
+    margin-top: 20px; /* ปรับระยะห่างด้านบน */
+    background-color: #fff; /* พื้นหลังสีขาว */
+    padding: 10px; /* เพิ่มการเว้นขอบ */
+    border-radius: 10px; /* ขอบโค้งมน */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    max-width: 320px; /* กำหนดความกว้างสูงสุด */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    overflow: hidden; /* ป้องกันการเลยออกมาจากกล่อง */
 }
+
+#youtube-video-container {
+    display: none;
+    background-color: #fff; /* พื้นหลังสีขาว */
+    padding: 10px; /* เพิ่มการเว้นขอบ */
+    border-radius: 10px; /* ขอบโค้งมน */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    max-width: 320px; /* กำหนดความกว้างสูงสุด */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    overflow: hidden; /* ป้องกันการเลยออกมาจากกล่อง */
+    margin-top: 800px;
+}
+
+#youtube-video-wrapper {
+    position: relative;
+    padding-bottom: 177.78%; /* อัตราส่วน 9:16 สำหรับวิดีโอแนวตั้ง */
+    height: 0;
+}
+
+#youtube-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none; /* ลบขอบ iframe */
+}
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
