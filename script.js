@@ -58,9 +58,10 @@ function checkPassword() {
             additionalMessage.style.display = 'none';
         }
 
-        // แสดงวิดีโอ
-        var videoContainer = document.getElementById('video-container');
-        fadeIn(videoContainer);
+        // แสดงวิดีโอจาก YouTube และเริ่มเล่นอัตโนมัติ
+        var youtubeVideoContainer = document.getElementById('youtube-video-container');
+        youtubeVideoContainer.querySelector('iframe').src += "?autoplay=1";
+        fadeIn(youtubeVideoContainer);
 
         // แสดงเนื้อหาเพิ่มเติม
         var additionalContent = document.getElementById('additional-content');
