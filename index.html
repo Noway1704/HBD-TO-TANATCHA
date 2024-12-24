@@ -6,7 +6,7 @@
     <title>HBD TO TANATCHA</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="startHearts()">
     <div id="container">
         <h1 id="message" class="moving-pink-gradient-text">Happy Birthday!</h1>
         <p>มีความสุขมากนะอ้วนนนน!</p>
@@ -28,11 +28,29 @@
             </div>
         </div>
 
-        <div id="youtube-video-container">
+        <!-- วิดีโอจาก YouTube -->
+        <div id="youtube-video-container" style="display:none;">
             <div id="youtube-video-wrapper">
                 <iframe src="https://www.youtube.com/embed/xXCKM2RMr_E" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
+        <div id="music-popup" style="display:none;">
+            <div id="music-cover" style="background-image: url('url-to-your-cover-image.jpg');"></div>
+            <div id="music-details">
+                <h3 id="music-title">ชื่อเพลงของคุณ</h3>
+                <div id="music-controls">
+                    <button onclick="skipBackward()">⏮️ 10 วินาที</button>
+                    <button onclick="toggleMusic()">⏯️</button>
+                    <button onclick="skipForward()">⏭️ 10 วินาที</button>
+                </div>
+                <div id="music-progress">
+                    <input type="range" id="progress-bar" value="0" min="0" max="100" step="1" />
+                    <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                </div>
+            </div>
+            <audio id="background-music" src="/img/Papang/GGGG.mp3"></audio>
+        </div>
+        
         
         
 
@@ -83,6 +101,8 @@
         </div>
     </div>
 
+    <canvas id="hearts-canvas"></canvas>
     <script src="script.js"></script>
+    <script src="hearts.js"></script>
 </body>
 </html>

@@ -24,7 +24,6 @@ function moveFocusBack(current, prevId) {
     }
 }
 
-// ฟังก์ชั่นตรวจสอบรหัสผ่าน
 function checkPassword() {
     var password = '';
     for (var i = 1; i <= 4; i++) {
@@ -71,6 +70,10 @@ function checkPassword() {
         var giftContainer = document.getElementById('gift-container');
         fadeIn(giftContainer);
 
+        // แสดงป็อปอัปเพลง
+        var musicPopup = document.getElementById('music-popup');
+        fadeIn(musicPopup);
+
         // เพิ่มการเคลื่อนไหวให้ข้อความเซอร์ไพรส์
         document.styleSheets[0].insertRule(`
             @keyframes fadeIn {
@@ -78,6 +81,9 @@ function checkPassword() {
                 to { opacity: 1; }
             }
         `, document.styleSheets[0].cssRules.length);
+
+        // หยุดหัวใจ
+        stopHearts = true;
 
         // เรียกใช้สไลด์โชว์
         showSlides(slideIndex = 1);
@@ -103,6 +109,64 @@ function fadeIn(element) {
 
     tick();
 }
+
+// ฟังก์ชั่นเปิด/ปิดเพลง
+function toggleMusic() {
+    const music = document.getElementById('background-music');
+    const isPlaying = !music.paused && !music.ended && music.currentTime > 0;
+
+    if (!isPlaying) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+function skipBackward() {
+    const music = document.getElementById('background-music');
+    music.currentTime -= 10;
+}
+
+function skipForward() {
+    const music = document.getElementById('background-music');
+    music.currentTime += 10;
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+const music = document.getElementById('background-music');
+const progressBar = document.getElementById('progress-bar');
+const currentTimeElement = document.getElementById('current-time');
+const totalTimeElement = document.getElementById('total-time');
+const musicCover = document.getElementById('music-cover');
+const musicTitle = document.getElementById('music-title');
+
+music.addEventListener('loadedmetadata', () => {
+    progressBar.max = music.duration;
+    totalTimeElement.textContent = formatTime(music.duration);
+    updateMusicInfo();
+});
+
+music.addEventListener('timeupdate', () => {
+    progressBar.value = music.currentTime;
+    currentTimeElement.textContent = formatTime(music.currentTime);
+});
+
+progressBar.addEventListener('input', () => {
+    music.currentTime = progressBar.value;
+});
+
+function updateMusicInfo() {
+    // เปลี่ยนข้อมูลเพลงตรงนี้ตามที่ต้องการ
+    musicCover.style.backgroundImage = 'url("url-to-your-cover-image.jpg")';
+    musicTitle.textContent = 'ชื่อเพลงของคุณ';
+}
+
+updateMusicInfo();
 
 // ฟังก์ชั่นจัดการเหตุการณ์ keydown
 function handleKeyDown(e) {
@@ -220,3 +284,155 @@ function handleTouchMove(evt) {
 // เพิ่มเหตุการณ์ touchstart และ touchmove
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
+
+// ฟังก์ชั่นหัวใจ
+let stopHearts = false; // ตัวแปรควบคุมการหยุดแสดงหัวใจ
+
+function startHearts() {
+    const canvas = document.getElementById('hearts-canvas');
+    const ctx = canvas.getContext('2d');
+    const hearts = [];
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function Heart(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 20 + 10;
+        this.speedY = Math.random() * 1 + 0.5;
+        this.alpha = Math.random() * 0.5 + 0.5;
+    }
+
+    Heart.prototype.update = function () {
+        this.y -= this.speedY;
+        if (this.y < -this.size) {
+            this.y = canvas.height + this.size;
+        }
+    };
+
+    Heart.prototype.draw = function () {
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.bezierCurveTo(this.x + this.size / 2, this.y - this.size / 2, this.x + this.size, this.y + this.size / 3, this.x, this.y + this.size);
+        ctx.bezierCurveTo(this.x - this.size, this.y + this.size / 3, this.x - this.size / 2, this.y - this.size / 2, this.x, this.y);
+        ctx.fillStyle = '#ff69b4';
+        ctx.fill();
+        ctx.globalAlpha = 1;
+    };
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (!stopHearts) {
+            if (Math.random() < 0.1) {
+                hearts.push(new Heart(Math.random() * canvas.width, canvas.height));
+            }
+
+            hearts.forEach((heart, index) => {
+                heart.update();
+                heart.draw();
+
+                if (heart.y < -heart.size) {
+                    hearts.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+    }
+
+    animate();
+}
+
+// ฟังก์ชั่นเปิด/ปิดเพลง
+function toggleMusic() {
+    const music = document.getElementById('background-music');
+    const isPlaying = !music.paused && !music.ended && music.currentTime > 0;
+
+    if (!isPlaying) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+function skipBackward() {
+    const music = document.getElementById('background-music');
+    music.currentTime -= 10;
+}
+
+function skipForward() {
+    const music = document.getElementById('background-music');
+    music.currentTime += 10;
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const music = document.getElementById('background-music');
+    const progressBar = document.getElementById('progress-bar');
+    const currentTimeElement = document.getElementById('current-time');
+    const totalTimeElement = document.getElementById('total-time');
+    const musicCover = document.getElementById('music-cover');
+    const musicTitle = document.getElementById('music-title');
+
+    music.addEventListener('loadedmetadata', () => {
+        progressBar.max = music.duration;
+        totalTimeElement.textContent = formatTime(music.duration);
+        updateMusicInfo();
+    });
+
+    music.addEventListener('timeupdate', () => {
+        progressBar.value = music.currentTime;
+        currentTimeElement.textContent = formatTime(music.currentTime);
+    });
+
+    progressBar.addEventListener('input', () => {
+        music.currentTime = progressBar.value;
+    });
+
+    function updateMusicInfo() {
+        // เปลี่ยนข้อมูลเพลงตรงนี้ตามที่ต้องการ
+        musicCover.style.backgroundImage = 'url("/img/Papang/agagagag.png")';
+        musicTitle.textContent = 'ของขวัญ - Musketeers';
+    }
+
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    updateMusicInfo();
+});
+
+function toggleMusic() {
+    const music = document.getElementById('background-music');
+    const isPlaying = !music.paused && !music.ended && music.currentTime > 0;
+
+    if (!isPlaying) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+function skipBackward() {
+    const music = document.getElementById('background-music');
+    music.currentTime -= 10;
+}
+
+function skipForward() {
+    const music = document.getElementById('background-music');
+    music.currentTime += 10;
+}
+
+
+updateMusicInfo();
+

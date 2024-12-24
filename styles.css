@@ -85,6 +85,104 @@ button:hover:enabled {
     color: #ff4500;
 }
 
+#youtube-video-container {
+    display: none;
+    margin-top: 20px; /* ปรับระยะห่างด้านบน */
+    background-color: #fff; /* พื้นหลังสีขาว */
+    padding: 10px; /* เพิ่มการเว้นขอบ */
+    border-radius: 10px; /* ขอบโค้งมน */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    max-width: 320px; /* กำหนดความกว้างสูงสุด */
+    margin: 0 auto 50px auto; /* จัดให้อยู่ตรงกลาง */
+    overflow: hidden; /* ป้องกันการเลยออกมาจากกล่อง */
+    margin-top: 1000px;
+}
+
+#youtube-video-wrapper {
+    position: relative;
+    padding-bottom: 177.78%; /* อัตราส่วน 9:16 สำหรับวิดีโอแนวตั้ง */
+    height: 0;
+}
+
+#youtube-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none; /* ลบขอบ iframe */
+}
+
+#music-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 320px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#music-cover {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+#music-details {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#music-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+#music-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#music-controls button {
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff4500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#music-controls button:hover {
+    background-color: #ff6347;
+}
+
+#music-progress {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#progress-bar {
+    flex-grow: 1;
+}
+
+#current-time, #total-time {
+    font-size: 0.9em;
+}
+
+
+
 .slideshow-container {
     position: relative;
     max-width: 600px; /* ความกว้างของกล่อง */
@@ -260,45 +358,15 @@ button:hover:enabled {
     background-color: #ff6347;
 }
 
-#youtube-video-container {
-    display: none;
-    margin-top: 20px; /* ปรับระยะห่างด้านบน */
-    background-color: #fff; /* พื้นหลังสีขาว */
-    padding: 10px; /* เพิ่มการเว้นขอบ */
-    border-radius: 10px; /* ขอบโค้งมน */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-    max-width: 320px; /* กำหนดความกว้างสูงสุด */
-    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
-    overflow: hidden; /* ป้องกันการเลยออกมาจากกล่อง */
-}
-
-#youtube-video-container {
-    display: none;
-    background-color: #fff; /* พื้นหลังสีขาว */
-    padding: 10px; /* เพิ่มการเว้นขอบ */
-    border-radius: 10px; /* ขอบโค้งมน */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-    max-width: 320px; /* กำหนดความกว้างสูงสุด */
-    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
-    overflow: hidden; /* ป้องกันการเลยออกมาจากกล่อง */
-    margin-top: 800px;
-}
-
-#youtube-video-wrapper {
-    position: relative;
-    padding-bottom: 177.78%; /* อัตราส่วน 9:16 สำหรับวิดีโอแนวตั้ง */
-    height: 0;
-}
-
-#youtube-video-wrapper iframe {
-    position: absolute;
+#hearts-canvas {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: none; /* ลบขอบ iframe */
+    pointer-events: none;
+    z-index: 9999;
 }
-
 
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -308,4 +376,27 @@ button:hover:enabled {
 @keyframes popupScale {
     from { transform: scale(0.7); }
     to { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .popup-content h2 {
+        font-size: 1.5em;
+    }
+
+    .popup-content p {
+        font-size: 1em;
+    }
 }
