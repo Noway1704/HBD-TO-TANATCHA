@@ -1,3 +1,6 @@
+function navigateToZoneStory() {
+    window.location.href = 'zone-story.html';
+}
 // ฟังก์ชั่นแสดงป็อปอัพ
 function showSurprise() {
     var popup = document.getElementById('password-popup');
@@ -87,10 +90,15 @@ function checkPassword() {
 
         // เรียกใช้สไลด์โชว์
         showSlides(slideIndex = 1);
+
+        // แสดงปุ่ม Zone Story
+        var zoneStoryButton = document.getElementById('zone-story-button');
+        zoneStoryButton.style.display = 'block';
     } else {
         errorMessage.style.display = 'block';
     }
 }
+
 
 // ฟังก์ชั่นเฟดอินเนื้อหาเพิ่มเติม
 function fadeIn(element) {

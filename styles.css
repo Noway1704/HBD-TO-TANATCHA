@@ -182,9 +182,6 @@ button:hover:enabled {
     font-size: 0.9em;
 }
 
-
-
-
 .slideshow-container {
     position: relative;
     max-width: 600px; /* ความกว้างของกล่อง */
@@ -402,3 +399,20 @@ button:hover:enabled {
         font-size: 1em;
     }
 }
+
+#zone-story-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff4500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; /* Ensure it is centered and has spacing */
+}
+
+#zone-story-button:hover {
+    background-color: #ff6347;
+}
+

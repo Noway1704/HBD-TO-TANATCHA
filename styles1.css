@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f4c3, #80cbc4); /* พื้นหลังสีโทนเขียวอ่อนและเขียว */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
+}
+
+#container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 3em;
+    color: #333;
+    font-family: 'Cursive', 'Arial', sans-serif; /* เพิ่มฟอนต์เพื่อความสวยงาม */
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.story {
+    margin: 20px 0;
+    opacity: 0; /* เริ่มต้นด้วยความโปร่งใส */
+    transform: translateY(20px); /* เลื่อนลงเล็กน้อย */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.story img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.story p {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 10px;
+}
+
+.story.visible {
+    opacity: 1; /* เฟดขึ้นมา */
+    transform: translateY(0); /* เลื่อนขึ้น */
+}
