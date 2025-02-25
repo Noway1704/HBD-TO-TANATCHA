@@ -10,14 +10,57 @@ function isInViewport(element) {
 }
 
 // Function to add the "visible" class to elements in the viewport
-function checkVisibility() {
-    const stories = document.querySelectorAll('.story');
-    stories.forEach(story => {
+const checkVisibility = () => {
+    document.querySelectorAll('.story').forEach(story => {
         if (isInViewport(story)) {
             story.classList.add('visible');
         }
     });
+};
+
+function navigateToZoneStory() {
+    // เก็บสถานะการเล่นเพลงและตำแหน่งเวลาของเพลง
+    const music = document.getElementById('background-music');
+    const isPlaying = !music.paused && !music.ended && music.currentTime > 0;
+    const currentTime = music.currentTime;
+
+    // เก็บข้อมูล
+    localStorage.setItem('musicPlaying', isPlaying);
+    localStorage.setItem('musicTime', currentTime);
+
+    // ไปยังหน้าใหม่
+    window.location.href = 'zone-story.html';
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const music = document.getElementById('background-music');
+    
+    // อ่านค่าจาก localStorage
+    const musicPlaying = localStorage.getItem('musicPlaying') === 'true';
+    const musicTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+
+    // รีเซ็ตสถานะเพลงและตำแหน่ง
+    if (musicPlaying) {
+        music.currentTime = musicTime;
+        music.play();
+    }
+});
+// zone-story.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    const music = document.getElementById('background-music');
+    
+    // อ่านข้อมูลจาก localStorage
+    const musicPlaying = localStorage.getItem('musicPlaying') === 'true';
+    const musicTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+
+    // ตั้งเวลาเพลงที่ถูกเก็บใน localStorage
+    music.currentTime = musicTime;
+
+    // ถ้าเพลงกำลังเล่นจากหน้าแรก ให้เล่นต่อ
+    if (musicPlaying) {
+        music.play();
+    }
+});
 
 // Check visibility on scroll and on page load
 window.addEventListener('scroll', checkVisibility);

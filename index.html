@@ -17,14 +17,16 @@
         <!-- ป็อปอัปใส่รหัส -->
         <div id="password-popup" class="popup" style="display:none;">
             <div class="popup-content">
-                <p>ใส่รหัสก่อนนะอ้วนรหัสคือ : open</p>
+                <p>ใส่รหัสก่อนนะอ้วน<br>คำใบคือ : วันแรกที่เราคุยกัน!</p>
                 <div class="password-inputs">
-                    <input type="text" maxlength="1" id="char1" oninput="moveFocus(1, 2)">
-                    <input type="text" maxlength="1" id="char2" oninput="moveFocus(2, 3)">
-                    <input type="text" maxlength="1" id="char3" oninput="moveFocus(3, 4)">
-                    <input type="text" maxlength="1" id="char4" oninput="moveFocus(4, 5)">
+                    <input type="text" id="char1" maxlength="1" oninput="moveFocus(1, 2)">
+                    <input type="text" id="char2" maxlength="1" oninput="moveFocus(2, 3)">
+                    <input type="text" id="char3" maxlength="1" oninput="moveFocus(3, 4)">
+                    <input type="text" id="char4" maxlength="1" oninput="moveFocus(4, 5)"> <!-- เพิ่มการโฟกัสไปช่อง 5 -->
+                    <input type="text" id="char5" maxlength="1" oninput="moveFocus(5, 6)"> <!-- ช่องใหม่ -->
+                    <input type="text" id="char6" maxlength="1" oninput="moveFocus(6, 7)"> <!-- ช่องใหม่ -->
                 </div>
-                <p id="error-message" style="color:yellow; display:none;">Incorrect password. Please try again.</p>
+                <p id="error-message" style="color:yellow; display:none;">ดูต่ะลืมหล่าว</p>
             </div>
         </div>
 
@@ -35,6 +37,7 @@
             </div>
         </div>
         <div id="music-popup" style="display:none;">
+            <h2> แวะฟังเพลงก่อนน้าอ้วนๆ 🎵 </h2>
             <div id="music-cover" style="background-image: url('url-to-your-cover-image.jpg');"></div>
             <div id="music-details">
                 <h3 id="music-title">ชื่อเพลงของคุณ</h3>
@@ -99,7 +102,12 @@
     <div id="greeting-card-popup" class="popup" style="display:none;">
         <div class="popup-content">
             <h2>แฮปๆนะคนเก่งของเค้า</h2>
-            <p>เดะค่อยมาเขียนอิอิ</p>
+            <p>"สุขสันต์วันเกิดนะรักเธอที่สุดในโลก ❤️<br>
+                วันนี้คงเป็นวันเกิดเธอแล้ว เค้าตั้งใจทำมา 2 เดือน<br>
+                ตอนนี้เธอคงได้เปิดอ่านมัน เราผ่านอะไรมาตั้งเยอะ <br>
+                ทั้งดีและไม่ดี แต่ทุกครั้งก็ให้อภัยกันผ่านมาได้ <br>
+                ขอให้หลังจากนี้เราผ่านไปด้วยกันโดยไม่มีเรื่องไรต้องให้คิด<br>
+                ขอให้เรารักกันให้มากๆนะ มีความสุขมากๆ รักเธอทุกๆ วัน 💖"</p>
             <button onclick="closeGreetingCard()">Close</button>
         </div>
     </div>

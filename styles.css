@@ -1,12 +1,24 @@
 body {
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #a0c4ff, #f0a6ca); /* พื้นหลังสีโทนฟ้าอมชมพู */
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.5s ease-in-out;
 }
+
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background-size: 200% 200%;
+    animation: backgroundAnimation 10s ease infinite;
+}
+
 
 #container {
     text-align: center;
@@ -59,25 +71,33 @@ img {
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 1em;
-    color: #fff;
-    background-color: #ff4500;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     display: block;
-    margin: 20px auto;
+    margin: 20px auto 0;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff7eb3, #ff4081); /* Gradient สีชมพูม่วง */
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.4); /* เงานุ่ม ๆ */
+    transition: all 0.3s ease-in-out;
 }
 
-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+/* ทำให้ปุ่มมีเอฟเฟกต์ hover */
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ff4081, #ff7eb3); /* สลับสี Gradient */
+    box-shadow: 0 6px 15px rgba(255, 64, 129, 0.6);
 }
 
-button:hover:enabled {
-    background-color: #ff6347;
+/* ทำให้ปุ่มมีเอฟเฟกต์เวลากด */
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(255, 64, 129, 0.5);
 }
+
 
 #surprise-message {
     margin-top: 20px;
@@ -270,6 +290,16 @@ button:hover:enabled {
         transform: translateX(10px);
     }
 }
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+#gift-container {
+    display: none;
+    animation: bounceIn 0.8s ease-in-out;
+}
 
 #gift-content img {
     width: 200px;
@@ -377,6 +407,32 @@ button:hover:enabled {
     to { transform: scale(1); }
 }
 
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.error {
+    animation: shake 0.3s ease-in-out;
+    color: red;
+    font-weight: bold;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+#gift-container {
+    display: none;
+    animation: bounceIn 0.8s ease-in-out;
+}
+
+
 @media (max-width: 600px) {
     h1 {
         font-size: 2em;
@@ -401,18 +457,30 @@ button:hover:enabled {
 }
 
 #zone-story-button {
-    padding: 10px 20px;
-    font-size: 1em;
+    padding: 15px 30px;
+    font-size: 1.2em;
     color: #fff;
-    background-color: #ff4500;
+    background-color: #ff6bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     display: block;
     margin: 20px auto; /* Ensure it is centered and has spacing */
 }
 
 #zone-story-button:hover {
-    background-color: #ff6347;
+    background-color: #ff39ff;
 }
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
 

@@ -9,14 +9,19 @@ function showSurprise() {
 
 // ฟังก์ชั่นเลื่อนโฟกัสไปยังช่องถัดไป
 function moveFocus(current, nextId) {
+    var errorMessage = document.getElementById('error-message');
+    errorMessage.style.display = 'none'; // ซ่อนข้อความ error ทุกครั้งที่มีการพิมพ์
+
     if (document.getElementById('char' + current).value.length == 1) {
-        if (nextId <= 4) {
+        if (nextId <= 6) {
             document.getElementById('char' + nextId).focus();
         } else {
-            checkPassword(); // ตรวจสอบรหัสเมื่อใส่ครบทุกช่อง
+            checkPassword();
         }
     }
 }
+
+
 
 // ฟังก์ชั่นเลื่อนโฟกัสไปยังช่องก่อนหน้า
 function moveFocusBack(current, prevId) {
@@ -27,14 +32,15 @@ function moveFocusBack(current, prevId) {
     }
 }
 
+
 function checkPassword() {
     var password = '';
-    for (var i = 1; i <= 4; i++) {
+    for (var i = 1; i <= 6; i++) { // แก้จาก 4 เป็น 6 เพื่อรองรับรหัสผ่านใหม่
         password += document.getElementById('char' + i).value;
     }
 
     var errorMessage = document.getElementById('error-message');
-    if (password.toLowerCase() === 'open') {
+    if (password === '110767') { // เปลี่ยนรหัสผ่านตรงนี้
         var popup = document.getElementById('password-popup');
         popup.style.display = 'none';
 
@@ -76,14 +82,6 @@ function checkPassword() {
         // แสดงป็อปอัปเพลง
         var musicPopup = document.getElementById('music-popup');
         fadeIn(musicPopup);
-
-        // เพิ่มการเคลื่อนไหวให้ข้อความเซอร์ไพรส์
-        document.styleSheets[0].insertRule(`
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-        `, document.styleSheets[0].cssRules.length);
 
         // หยุดหัวใจ
         stopHearts = true;
@@ -441,6 +439,52 @@ function skipForward() {
     music.currentTime += 10;
 }
 
+function navigateToZoneStory() {
+    // เก็บสถานะการเล่นเพลงและตำแหน่งเวลาของเพลง
+    const music = document.getElementById('background-music');
+    const isPlaying = !music.paused && !music.ended && music.currentTime > 0;
+    const currentTime = music.currentTime;
+
+    // เก็บข้อมูล
+    localStorage.setItem('musicPlaying', isPlaying);
+    localStorage.setItem('musicTime', currentTime);
+
+    // ไปยังหน้าใหม่
+    window.location.href = 'zone-story.html';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const music = document.getElementById('background-music');
+    
+    // อ่านค่าจาก localStorage
+    const musicPlaying = localStorage.getItem('musicPlaying') === 'true';
+    const musicTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+
+    // รีเซ็ตสถานะเพลงและตำแหน่ง
+    if (musicPlaying) {
+        music.currentTime = musicTime;
+        music.play();
+    }
+});
+// main.js
+
+// ฟังก์ชันสำหรับปุ่ม Go to Zone Story
+function navigateToZoneStory() {
+    const music = document.getElementById('background-music');
+    const isPlaying = !music.paused && !music.ended && music.currentTime > 0;
+    const currentTime = music.currentTime;
+
+    // เก็บสถานะเพลงและเวลาปัจจุบันใน localStorage
+    localStorage.setItem('musicPlaying', isPlaying);
+    localStorage.setItem('musicTime', currentTime);
+
+    // เปิดหน้า zone-story.html
+    window.open('zone-story.html', '_blank');
+}
+
+
 
 updateMusicInfo();
+
+
 

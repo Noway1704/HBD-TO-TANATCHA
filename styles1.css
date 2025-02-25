@@ -22,7 +22,10 @@ body {
 
 h1 {
     font-size: 3em;
-    color: #333;
+    background: linear-gradient(to right, #ff9a9e, #fecfef, #fb749b); /* สีโทนชมพู */
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: pinkGradientMove 5s ease-in-out infinite, moveUpDown 2s ease-in-out infinite;
     font-family: 'Cursive', 'Arial', sans-serif; /* เพิ่มฟอนต์เพื่อความสวยงาม */
 }
 
@@ -39,8 +42,9 @@ p {
 }
 
 .story img {
-    width: 100%;
-    max-width: 600px;
+    width: 400px;
+    height: 200px;
+    max-width: 400px;
     height: auto;
     border-radius: 10px;
 }
