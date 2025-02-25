@@ -18,6 +18,7 @@ const checkVisibility = () => {
     });
 };
 
+// Function to navigate to another page while keeping music playing
 function navigateToZoneStory() {
     // เก็บสถานะการเล่นเพลงและตำแหน่งเวลาของเพลง
     const music = document.getElementById('background-music');
@@ -31,6 +32,8 @@ function navigateToZoneStory() {
     // ไปยังหน้าใหม่
     window.location.href = 'zone-story.html';
 }
+
+// Check if music is playing when the page is loaded
 document.addEventListener('DOMContentLoaded', function() {
     const music = document.getElementById('background-music');
     
@@ -43,23 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         music.currentTime = musicTime;
         music.play();
     }
-});
-// zone-story.js
-
-document.addEventListener('DOMContentLoaded', function() {
-    const music = document.getElementById('background-music');
     
-    // อ่านข้อมูลจาก localStorage
-    const musicPlaying = localStorage.getItem('musicPlaying') === 'true';
-    const musicTime = parseFloat(localStorage.getItem('musicTime')) || 0;
-
-    // ตั้งเวลาเพลงที่ถูกเก็บใน localStorage
-    music.currentTime = musicTime;
-
-    // ถ้าเพลงกำลังเล่นจากหน้าแรก ให้เล่นต่อ
-    if (musicPlaying) {
-        music.play();
-    }
+    // เรียกใช้ checkVisibility ทันทีเมื่อหน้าโหลด
+    checkVisibility();
 });
 
 // Check visibility on scroll and on page load
