@@ -65,6 +65,12 @@ p {
     transform: translateY(0); /* เลื่อนขึ้น */
 }
 
+/* ให้รูปแรกแสดงทันที */
+.story:first-child {
+    opacity: 1; /* ทำให้รูปแรกแสดงทันที */
+    transform: translateY(0); /* ทำให้รูปแรกไม่เลื่อน */
+}
+
 /* เพิ่มการเคลื่อนไหวให้กับชื่อเรื่อง */
 @keyframes pinkGradientMove {
     0% { background-position: 0% 50%; }
